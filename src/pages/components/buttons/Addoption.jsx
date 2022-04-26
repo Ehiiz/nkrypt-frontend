@@ -2,7 +2,7 @@ export default function Addoption(){
 
 
     return(
-        <div className="">
+        <div className="flex">
         <div className="text-white flex flex-col items-center bg-primary rounded-lg w-24 px-8 py-4 m-2">
             <div className="mb-1">
             <svg className="fill-white" width="24" height="24" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">

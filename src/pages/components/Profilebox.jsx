@@ -6,11 +6,11 @@ export default function Profilebox(){
 
 
     return (
-        <div className="flex flex-col pt-2 min-h-screen">
+        <div className="flex flex-col pt-2 w-full px-4">
      
        <Microicon />
-        <div className="flex items-center">
-        <h2 className="self-base text-xl font-light text-white">GRANDE CASSE</h2>
+        <div className="flex items-end justify-between mb-4 pt-2 ">
+        <h2 className="text-xl font-light text-white">GRANDE CASSE</h2>
         <Boxicon />
         </div> 
         <hr className="mb-2" />    

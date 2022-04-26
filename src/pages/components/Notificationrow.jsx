@@ -92,11 +92,13 @@ export default function Notificationrow(){
         message:'commented on your krypt'
     }
     ]
+
+
     
 
 
     return(
-        <div className="mt-14 mb-16">
+        <div className="mt-16 pt-1 mb-14 pb-2 px-2">
              {profiles.map(profile => <SingleNote
             username={profile.username}
             img={profile.img}

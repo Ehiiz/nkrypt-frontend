@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom";
 import FormInput from "./components/microcomponents/FormInput";
 import Socials from "./components/Socials";
 
@@ -27,7 +28,7 @@ export default function Signup(){
 
 
     return(
-        <div className="max-h-full px-4 flex flex-col w-full bg-secondary-600 min-h-screen">
+        <div className="max-h-full px-4 flex flex-col w-full bg-secondary-600 min-h-screen font-poppins">
         <section className="mb-8 mt-8 self-left">
             <p className="text-xl text-white font-bold mb-0">Share</p>
             <p className="text-xl text-white font-bold mb-0 mt-0">Socialize</p>
@@ -37,8 +38,14 @@ export default function Signup(){
 
 
         <section className="flex justify-between mt-8">
-            <button className="dormant">Login</button>
-            <button className="active">Signup</button>
+            <button className="dormant">
+           <Link to="/">Login</Link>
+           
+            </button>
+            <button className="active">
+            <Link to="/signup"> Signup</Link>
+           
+            </button>
         </section>
 
       
