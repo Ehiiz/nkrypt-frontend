@@ -1,6 +1,6 @@
-import Header from "./components/Header";
-import Nav from "./components/Nav";
-import Notificationrow from "./components/Notificationrow";
+import Header from "../core-components/Header";
+import Nav from "../core-components/Nav";
+import Notifrow from "../macro-components/Notifrow";
 
 export default function Notification(){
 
@@ -17,7 +17,7 @@ export default function Notification(){
         <Header 
             title={notification}
         />
-        <Notificationrow />
+        <Notifrow />
         
         <Nav 
             home={navcolor.home}

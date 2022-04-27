@@ -22,7 +22,7 @@
 }
 
 .pro-bttn{
-    @apply text-xl px-4 py-4 text-white bg-primary rounded-tl-2xl font-light w-full;
+    @apply text-xl px-4 py-4 text-white bg-primary rounded-tl-2xl font-bold w-full;
 }
 
 .pro-bttn-dormant{
@@ -44,4 +44,148 @@
 
 .home-image{
     @apply w-20 object-cover h-20 rounded-full border-2 border-secondary-400;
+}
+
+.lock-bttn{
+    @apply flex font-bold bg-primary text-white w-48 px-2 py-4 items-center rounded-md mb-4;
+}
+
+.page{
+    @apply bg-secondary-600 w-full h-screen flex flex-col items-center mb-12;
+}
+
+.timecon{
+    @apply text-secondary-900 flex flex-col items-center;
+}
+
+.sub-bttn{
+    @apply mt-16 shadow border-2 border-white text-secondary-500 bg-secondary-100 rounded-xl py-4 px-5 font-bold;
+}
+
+.add-bttn{
+    @apply text-white flex flex-col items-center bg-primary rounded-lg w-24 px-8 py-4 m-2;
+}
+
+.head{
+    @apply flex justify-between items-end fixed top-0 left-0 right-0 bg-secondary-600 py-4 px-4;
+}
+
+.nav{
+    @apply flex flex-col items-center text-white;
+}
+
+.nav-block{
+    @apply flex items-center flex-col mb-1;
+}
+
+.img-com{
+    @apply w-8 rounded-full border-2 border-white mr-3;
+}
+
+.comment-box{
+    @apply flex flex-col rounded-t-3xl bg-secondary-500 items-center mt-60  pt-4 pb-16;
+}
+
+.comment-bar{
+    @apply border-2 border-white rounded-sm w-32 mt-3;
+}
+
+.multi-tab{
+    @apply flex flex-col;
+}
+
+.multi-input{
+    @apply rounded-2xl border-2 border-secondary-100 bg-secondary-500 placeholder:pl-4 mt-3 h-10;
+}
+
+.multi-num{
+    @apply bg-primary border-2 border-white font-bold text-sm rounded-full mb-2 px-4 py-2 text-white w-fit;
+}
+
+.multi-sec{
+    @apply w-full text-white bg-secondary-600 flex flex-col pt-16 px-4;
+}
+
+.quest{
+    @apply rounded-2xl bg-secondary-500 placeholder:pl-4 h-10;
+}
+
+.share-sec{
+    @apply mr-4 text-xs font-light flex flex-col items-center;
+}
+
+.timeline-box{
+    @apply px-4 py-2 rounded-2xl flex flex-col bg-secondary-500 mb-4
+}
+
+.box-sec{
+    @apply text-secondary-400 flex flex-col w-fit items-end pr-4;
+}
+
+.notif-image{
+    @apply w-8 rounded-xl border-2 border-secondary-400;
+}
+
+.def-bttn{
+    @apply border-white text-secondary-500 bg-secondary-100 rounded-full py-4 px-4 font-bold;
+}
+
+.create{
+    @apply flex flex-col bg-secondary-600 pt-20 w-full items-center px-4 pb-24;
+}
+
+.create-title {
+    @apply self-center rounded-2xl bg-secondary-500 placeholder:pl-4 h-10 w-64 shadow-md mb-3;
+}
+
+.create-area{
+    @apply w-full pl-2 text-white rounded-2xl bg-secondary-500 placeholder:pl-4 shadow-md;
+}
+
+.choice-sec{
+    @apply flex flex-col bg-secondary-600 pt-20 w-full items-center px-4 pb-24;
+}
+
+.setin{
+    @apply flex bg-primary text-white text-sm py-2 px-4 mt-4 mb-8 rounded-full;
+}
+
+.signed{
+    @apply max-h-full px-4 flex flex-col w-full bg-secondary-600 min-h-screen font-poppins;
+}
+
+.suc-box{
+    @apply py-8 px-8 rounded-md flex flex-col bg-secondary-500 items-center w-80;
+}
+
+.unlock-sec{
+    @apply flex flex-col bg-secondary-600 items-center pt-16 w-full px-4 pb-16;
+}
+
+.unlock-title{
+    @apply text-xl text-secondary-700;
+}
+
+.unlock-user{
+    @apply text-lg text-secondary-400;
+}
+
+.unlock-img{
+    @apply h-fit border-2 border-secondary-900 rounded-sm w-fit;
+}
+
+.unlock-bttn{
+    @apply self-center mt-7 mb-24 shadow text-white bg-primary rounded-xl py-3 px-5 font-bold;
+}
+
+.land{
+    @apply flex flex-col px-4 py-4 mt-12 fixed top-0 mb-8 w-full bg-secondary-600 h-48
+}
+
+.land-title{
+    @apply text-lg text-secondary-900;
+}
+
+.land-con{
+    @apply text-secondary-900 flex flex-col items-center;
 }

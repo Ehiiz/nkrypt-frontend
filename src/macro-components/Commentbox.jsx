@@ -8,7 +8,7 @@ const postTime = `${hours}:${minutes}`
     return(
         <section className="w-full text-white py-4 px-8" >
        <div className="flex items-start">
-        <img className="w-8 rounded-full border-2 border-white mr-3" src="img/Rectangle 46.png" alt="" />
+        <img className="img-com" src="img/Rectangle 46.png" alt="" />
             <div className="flex flex-col">
                 <p className="text-secondary-400 text-xs mb-1">@jonjoshelvey</p>
                 <p className="text-sm text-white">This is who we are</p>

@@ -1,6 +1,6 @@
-import SingleNote from "./microcomponents/SingleNote";
+import SingleNote from "../micro-components/SingleNote";
 
-export default function Notificationrow(){
+export default function Notifrow(){
 
     const profiles = [
         {

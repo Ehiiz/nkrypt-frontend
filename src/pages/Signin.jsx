@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
-import FormInput from "./components/microcomponents/FormInput";
-import Socials from "./components/Socials";
+import FormInput from "../micro-components/FormInput";
+import Socials from "../macro-components/Socials";
 
 export default function Signin(){
 
@@ -20,7 +20,7 @@ export default function Signin(){
 
 
     return(
-        <div className="max-h-full px-4 flex flex-col w-full bg-secondary-600 min-h-screen font-poppins">
+        <div className="signed">
         <section className="mb-8 mt-8 self-left">
             <p className="text-xl text-white font-bold mb-0">Share</p>
             <p className="text-xl text-white font-bold mb-0 mt-0">Socialize</p>

@@ -1,4 +1,4 @@
-import Kryptprofile from "./microcomponents/Kryptprofile";
+import Kryptprofile from "../micro-components/Kryptprofile";
 
 export default function Trending(){
 

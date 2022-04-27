@@ -1,10 +1,10 @@
-import Commentbox from "./microcomponents/Commentbox";
+import Commentbox from "./Commentbox";
 
 export default function Comments(){
 
 return(
-    <div className="flex flex-col rounded-t-3xl bg-secondary-500 items-center mt-60 mb-18 pt-4 pb-16">
-    <hr className="border-2 border-white rounded-sm w-32 mt-3"/>
+    <div className="comment-box">
+    <hr className="comment-bar"/>
         <Commentbox />
         <Commentbox />
         <Commentbox />

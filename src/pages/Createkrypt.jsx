@@ -1,6 +1,6 @@
-import Header from "./components/Header";
-import Nav from "./components/Nav";
-import Addoption from "./components/buttons/Addoption";
+import Header from "../core-components/Header";
+import Nav from "../core-components/Nav";
+import Addoption from "../bttns/Addoption";
 import {Link} from "react-router-dom";
 
 export default function Createkrypt(){
@@ -12,17 +12,17 @@ export default function Createkrypt(){
     }
 
     return(
-        <div className="flex flex-col items-center mb-12 h-screen bg-secondary-600">
+        <div className="page">
           <Header />
-          <section className="flex flex-col bg-secondary-600 pt-20 w-full items-center px-4 pb-24">
+          <section className="create">
            <div className="w-full">
-           <input className=" self-center rounded-2xl bg-secondary-500 placeholder:pl-4 h-10 w-64 shadow-md mb-3" type="text" placeholder="Title" />
-              <textarea className=" w-full pl-2 text-white rounded-2xl bg-secondary-500 placeholder:pl-4 shadow-md" name="" id="" cols="30" rows="10" placeholder="Start typing">
+           <input className="create-title" type="text" placeholder="Title" />
+              <textarea className="create-area" name="" id="" cols="30" rows="10" placeholder="Start typing">
              </textarea>
            </div>
              <Addoption />
-          <Link to="/access">
-            <button className="mt-2 shadow border-1 border-white text-secondary-500 bg-secondary-100 rounded-xl py-4 px-5 font-bold"> 
+          <Link to="/setlock">
+            <button className="mt-2 shadow border-1 def-bttn"> 
             Submit
            </button>
            </Link>
