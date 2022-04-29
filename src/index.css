@@ -98,12 +98,17 @@
     @apply rounded-2xl border-2 border-secondary-100 bg-secondary-500 placeholder:pl-4 mt-3 h-10;
 }
 
+.multi-input2{
+    @apply rounded-2xl border-4 border-primary bg-secondary-500 placeholder:pl-4 mt-3 h-10;
+}
+
+
 .multi-num{
     @apply bg-primary border-2 border-white font-bold text-sm rounded-full mb-2 px-4 py-2 text-white w-fit;
 }
 
 .multi-sec{
-    @apply w-full text-white bg-secondary-600 flex flex-col pt-16 px-4;
+    @apply w-full text-white bg-secondary-500 flex flex-col pt-16 px-4;
 }
 
 .quest{
@@ -183,9 +188,10 @@
 }
 
 .land-title{
-    @apply text-lg text-secondary-900;
+    @apply text-xl text-secondary-900;
 }
 
 .land-con{
     @apply text-secondary-900 flex flex-col items-center;
 }
+

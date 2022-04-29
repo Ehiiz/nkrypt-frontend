@@ -66,7 +66,7 @@ export default function Landing(){
                      </div>
                  </section>
             </section>
-            <div className="w-full">
+            <div className="w-full overflow-auto scrollbar-hide">
             <Comments />
 
             </div>

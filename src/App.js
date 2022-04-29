@@ -1,5 +1,4 @@
 import './App.css';
-
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Profile from './pages/Profile';
 import Signin from './pages/Signin';
@@ -15,6 +14,9 @@ import Createkrypt from './pages/Createkrypt';
 import Multichoice from './pages/Multichoice';
 import Success from './pages/Success';
 import Settings from './pages/Settings';
+import Answerpass from './pages/Answerpass';
+import AnswerQuiz from './pages/AnswerQuiz';
+import Answermulti from './pages/Answermulti';
 
 
 function App() {
@@ -36,6 +38,9 @@ function App() {
         <Route path="/choice" exact element={<Multichoice />} />
         <Route path="/success" exact element={<Success />} />
         <Route path="/settings" exact element={<Settings />} />
+        <Route path="/answerpass" exact element={<Answerpass />} />
+        <Route path="/answerquiz" exact element={<AnswerQuiz />} />
+        <Route path="/answermulti" exact element={<Answermulti />}/>
        </Routes>
     </Router>
 
