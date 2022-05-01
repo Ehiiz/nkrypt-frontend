@@ -88,7 +88,7 @@ const textsize = "text-sm"
 
 
     return(
-        <div className="flex overflow-x-scroll scrollbar-hide mt-16 px-2 pb-4">
+        <div className="bg-secondary-600 flex overflow-x-scroll scrollbar-hide mt-16 px-2 pb-4">
          {profileDetails.map(profile => <Kryptprofile
             image={profile.image}
             username={profile.username}

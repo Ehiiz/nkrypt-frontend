@@ -3,8 +3,66 @@ import Nav from "../core-components/Nav";
 import Timebox from "../macro-components/Timebox";
 import Trending from "../macro-components/Trending";
 import {Link} from "react-router-dom";
+import {useEffect, useState} from "react";
+import Axios from 'axios';
+import api from "../api/posts";
+import useSWR from 'swr';
+
 
 export default function Home(){
+
+    const [homedata, setHomeData] = useState([]);
+
+    // const fetcher = (...url) => fetch(...url).then(res => res.json())
+
+    // const { data, error } = useSWR('http://localhost:4000/home', fetcher);
+    // if (error) return <div>failed to load</div>
+    // if (!data) return <div>loading...</div>
+
+
+
+//     const fetchItems = async() =>{
+//         const data = await fetch('/home');
+//         const hdata = await data.json();
+//         console.log(hdata);
+//         setHomeData([...hdata])
+
+// }
+
+// const fetchUsers = async() =>{
+//     try{
+//         const response =  await api.get('/home')
+//         setHomeData([...response.data.data])
+//     }
+//     catch(err){
+
+//     }
+// }
+
+
+    useEffect(()=>{
+//         fetchUsers() 
+//     }
+              
+       
+        Axios.get('/home')
+        .then(function(response){
+            setHomeData([...response.data.data]);
+        })
+        .catch(function(error){
+            console.log(error);
+        })
+        .then(function(){
+
+        })
+    }
+       
+    ,[])
+
+
+
+  
+    console.log(homedata);
 
     const navcolor = {
         home:"fill-primary",
@@ -15,28 +73,26 @@ export default function Home(){
     const home = "Home"
 
     return(
-        <div>
+        <div className="bg-secondary-600 h-screen">
             <Header 
                 title = {home}
             />
             <Trending />
-            <div className="px-4 mb-18">
-            <Link to="/kryptpage">
-            <Timebox />
-            </Link>
+            <div className="px-4 mb-18 pb-36 h-fit bg-secondary-600">
            
-            <Timebox />
-            <Timebox />
-            <Timebox />
-            <Timebox />
-            <Timebox />
-            <Timebox />
-            <Timebox />
-            <Timebox />
-            <Timebox />
-            <Timebox />
-            <Timebox />
-            <Timebox />
+            {homedata.map(homedata=> <Timebox
+                   title={homedata.title}
+                   username={homedata.username}
+                   date={homedata.date}
+                   time={homedata.time}
+                   success={homedata.success}
+                   failed={homedata.failure}
+                   comments={homedata.comment} 
+          />
+
+          )}
+
+           
             </div>
             <Link to="/create">
             <button className="fixed bottom-20  right-6 shadow border-4 def-bttn flex"> 

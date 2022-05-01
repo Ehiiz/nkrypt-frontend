@@ -7,7 +7,7 @@ import MultiAnswerBox from "../macro-components/MultiAnswerBox";
 export default function AnswerQuiz(){
 
 
-    
+    //Color For Navigation Bar
     const navcolor = {
         home:"fill-primary",
         notification:"fill-secondary-900",

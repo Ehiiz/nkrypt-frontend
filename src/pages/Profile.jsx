@@ -48,7 +48,7 @@ export default function Profile(){
             <button className="pro-bttn">dekrypts</button>
             <button className="pro-bttn-dormant">my krypts</button>
         </section>
-        <section className="mb-16 w-full">
+        <section className="mb-16 w-full overflow-auto">
         <Profilebox />
         <Profilebox />
         <Profilebox />
