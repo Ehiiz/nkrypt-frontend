@@ -1,23 +1,51 @@
 import {Link} from "react-router-dom";
-import FormInput from "../micro-components/FormInput";
 import Socials from "../macro-components/Socials";
+import Axios from "axios";
+import { useState } from "react";
+import {useNavigate} from "react-router-dom"
 
 export default function Signin(){
 
-    const contacts =[
-        {placeholder: 'John', 
-        type: 'email',
-        name:'email'
-    },
- 
+    const [signDetail, setSignDetail] = useState({email:"", password:""})
 
-    {placeholder: '*******', 
-    type: 'password',
-    name:'password'},
+    const navigate = useNavigate();
     
-   
-    ]
 
+    const handleChange = e =>{
+        const {name, value} = e.target
+        setSignDetail({...signDetail, [name]:value})
+    }
+
+    const handleSubmit = e =>{
+        const {email, password} = signDetail
+        
+        const payload = {                         
+            signinData: {email, password}
+        }
+        console.log(payload)
+    
+    
+        //Data Posting Function
+        Axios.post('/signin', payload)
+            .then(res => {
+                console.log(res)
+                console.log(res.data);
+                console.log(res.data.status)
+                const status = res.data.status;
+                if (status === "success"){
+                navigate('/home')
+                }
+                else if (status === "failure"){
+                    navigate('/signin')
+                }
+            }).catch(error => {
+                console.log(error);
+            })
+    
+
+    }                  
+  
+    console.log(signDetail)
 
     return(
         <div className="signed">
@@ -38,16 +66,31 @@ export default function Signin(){
 
       
         
-        <section className="mt-8 self-center w-full">
-        {contacts.map(contact => <FormInput
-            placeholder={contact.placeholder}
-            type={contact.type}
-            name={contact.name}
-        />)}
-        </section>
+        <form className="mt-8 self-center w-full">
+        <div className="w-full mb-4">
+            <input 
+            className="form" 
+            type="text" 
+            name="email" 
+            placeholder="Jaycass50@gmail.com" 
+            onChange={handleChange}
+            />
+            <label className="text-sm block text-white" htmlFor="">email</label>
+        </div>
+        <div className="w-full mb-4">
+            <input 
+            className="form" 
+            name="password" 
+            type="password" 
+            placeholder="********" 
+            onChange={handleChange}
+            />
+            <label className="text-sm block text-white" htmlFor="">password</label>
+        </div>
+        </form>
 
-       <button className="landing-bttn self-center mt-4 mb-16">
-       <Link to="/home"> Login</Link>
+       <button onClick={handleSubmit} className="landing-bttn self-center mt-4 mb-16">
+        Login
        </button>
       
     

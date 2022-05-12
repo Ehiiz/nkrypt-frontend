@@ -2,20 +2,48 @@ import Comments from "../macro-components/Comments";
 import Header from "../core-components/Header";
 import Nav from "../core-components/Nav";
 import {Link} from "react-router-dom";
+import {useParams} from 'react-router-dom';
 import {ReactComponent as Exclaim} from "../svg/Exclamation Mark.svg";
 import {ReactComponent as Achievement} from "../svg/Achievement.svg";
 import {ReactComponent as Comment} from "../svg/uil_comments-alt.svg";
 import {ReactComponent as Audio} from "../svg/Play.svg";
 import {ReactComponent as Photo} from "../svg/gallery.svg";
 import {ReactComponent as Text} from "../svg/Text File.svg"
+import { useEffect, useState } from "react";
+import Axios from "axios";
 
 export default function Landing(){
 
+    const [krypt, setKrypt] = useState({title : "", success : "", failure : "", comment : "", content:""})
+    
     const navcolor = {
         home:"fill-primary",
         notification:"fill-secondary-900",
         profile:"fill-secondary-900",
     }
+  
+
+
+
+    const {id} = useParams();
+
+    useEffect(() => {
+                console.log("UseEffect started");
+                Axios.get(`/krypt/${id}`)
+                .then(function (response) {
+                    console.log(response.data.data);
+                  setKrypt({...response.data.data})
+                })
+                .catch(function (error) {
+                  // handle error
+                  console.log(error + "This did not get anything");
+                })
+                .then(function () {
+                  // always executed
+                });
+              
+        }, []);
+        
 
     return(
         <div className="page">
@@ -36,15 +64,15 @@ export default function Landing(){
                 <section className="flex justify-between mt-3">
                      <div className="land-con">
                     <Exclaim />
-                     4000
+                     {krypt.failure}
                      </div>
                      <div className="land-con">
                        <Achievement />
-                     3000    
+                    {krypt.success}    
                      </div>
                      <div className="land-con">
                    <Comment />
-                     234
+                     {krypt.comment}
                      </div>
                  </section>
             </section>

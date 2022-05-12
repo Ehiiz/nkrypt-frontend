@@ -1,8 +1,31 @@
 import Header from "../core-components/Header";
 import Nav from "../core-components/Nav";
 import {ReactComponent as Edit} from '../svg/bx_edit.svg'
+import Axios from 'axios'
 
 export default function Settings(){
+
+    Axios.get('/settings')
+    .then(function(res){
+        // const status = res.data.status;
+        // console.log(status)
+        console.log(res)
+        // if (error){
+        //     navigate('/')
+        //     }
+        //     else{
+        //         navigate('/')
+        //     }
+        // console.log(res)
+        // setHomeData([...res.data]);
+      
+    })
+    .catch(function(error){
+        console.log(error);
+    })
+    .then(function(){
+
+    })
 
     const settings = "Settings"
 

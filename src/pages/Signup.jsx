@@ -2,80 +2,141 @@ import {Link} from "react-router-dom";
 import Socials from "../macro-components/Socials";
 import { useEffect, useState } from "react";
 import Axios from "axios";
+import {useNavigate} from "react-router-dom"
 
 export default function Signup(){
 
+    const navigate = useNavigate();
+
+    //Form State Management
     const [userDetail, setUserDetail] = useState({username:"", email:"", password:"", verify:""})
-    const [passError, setPassError] = useState(false);
+
+    //Email Validation States
     const [passEmail, setPassEmail] = useState(false);
-    const [emailLength, setEmailLength] = useState(false);
-    const [passWell, setPassWell] = useState(false);
-    const [usersDeets, setUsersDeets] = useState([]);
-    const [userExists, setUserExists] = useState(false);
+    const [emailExist, setEmailExist] = useState(false);
+
+
+    //Password Validation States
+    const [passLength, setPassLength] = useState(false);
+    const [passError, setPassError] = useState(false);
+    const [passUpper, setPassUpper] = useState(false);
+    const [passLower, setPassLower] = useState(false);
+    const [passSpecial, setPassSpecial] = useState(false);
+    const [passDigit, setPassDigit] = useState(false);
     const [errorMessage, setErrorMessage] = useState(false);
-    const [submitBttn, setSubmitBttn] = useState(false)
 
-    useEffect(() => {
-        Axios.get("/home")
-        .then(function (response) {
-            setUsersDeets([...response.data.data])
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
-        .then(function(){
 
-        })
-    },[])
+    const [usersDeets, setUsersDeets] = useState([]);
 
+    //Button Validation
+    const [popError, setPopError] = useState("")
+
+
+    
+      
+      //Data Posting Function
+    // useEffect(() => {
+    //     Axios.get("/")
+    //     .then(function (response) {
+
+    //         setUsersDeets([...response.data])
+    //     })
+    //     .catch(function (error) {
+    //         console.log(error);
+    //     })
+    //     .then(function(){
+
+    //     })
+    // },[])
+
+
+
+    //Submit Function
 
     const handleSubmit = e => {
-        console.log("This works")
-        e.preventDefault();
+        const {username, password, email, verify} = userDetail;
+        if (username !== ""){
+            if(password !== ""){
+                if(email !== ""){
+                    if(verify !== ""){
+                        if (passEmail === false){
+                            if (passLength === false){
+                             if(passError === false){
+                                 if(passUpper === false){
+                                     if(passLower === false){
+                                         if(passSpecial === false){
+                                             if(passDigit === false){
+                                                 if(errorMessage === false){
+                                                     console.log("Baba na master")
+                                                     
+                                    const payload = {
+                                    
+                                        userData: {email, username, password}
+                                    }
+                                
+                                  
+                                    //Data Posting Function
+                                    Axios.post('/signup', payload)
+                                    .then(res => {
+                                            console.log(res);
+                                            const status = res.data.status;
+                                            console.log(res.data)
+                                            if (status === "success"){
+                                                navigate('/home')
+                                                }
+                                                else{
+                                                    navigate('/signin')
+                                                }
+                                        }).catch(error => {
+                                            console.log(error);
+                                        })
+                                                 } 
+                                             } 
+                                         }
+                                     }
+                                 }
+                             } 
+                            }
+                        }
+                    }else{
+                        setPopError("Kindly check your details")
+                    }
+        
+                }else{
+                    setPopError("Kindly fill your details")
+                }
+    
+            }else{
+                setPopError("Kindly fill your details")
+            }
 
-        const {email, username, password} = userDetail
-        console.log(email, username, password)
-
-        const payload = {
-           
-            userData: {email, username, password}
+        }else{
+            setPopError("Kindly fill in your details")
         }
 
-        Axios.post('http://localhost:4000/signup', payload)
-            .then(res => {
-                console.log(res.data);
-            }).catch(error => {
-                console.log(error);
-            })
+
+  
+       
+        e.preventDefault();
+
+    
+
 
 
     }
 
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-    const [email, setEmail] = useState({
-        error: false,
-        value: ""
-      });
-    
-      const handleChange2 = (e) => {
-        // Trim value & convert to lowercase
-        const value = e.target.value.trim().toLowerCase();
-    
-        // Test if email is valid
-        const isValidEmail = re.test(value);
-    
-        setEmail({
-          value,
-          error: !isValidEmail
-        });
-      };
-
+  
 
 
     const handleChange = (e) =>{
-        setUserDetail({...userDetail, [e.target.name]: e.target.value})
-     
+        if(e.target.name === "username"){
+            const trueUser = `@${e.target.value}`
+            setUserDetail({...userDetail, [e.target.name] : trueUser})
+        } else{
+            setUserDetail({...userDetail, [e.target.name]: e.target.value})         
+        }
+      
+        
         if(e.target.name === "verify"){
             if(e.target.value !== userDetail.password){
                 setPassError(true);
@@ -88,24 +149,83 @@ export default function Signup(){
         if(e.target.name === "email"){
             usersDeets.map(userDeet =>{
                 if (userDeet.email === e.target.value){
-                    setPassEmail(true)
+                    setEmailExist(true)
                 }
-                else if (userDeet.email !== e.target.value){
-                    setPassEmail(false)
+                else {
+                    setEmailExist(false)
                 }
             })
 
-            if(e.target.value === ""){
-                setEmailLength(true)
-
-            }
-            else{
-                setEmailLength(false)
+            const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+            const emailValidator = regex.test(e.target.value)
+            if(!emailValidator){
+                setPassEmail(true)
+            } else {
+                setPassEmail(false)
             }
 
         }
 
         else if(e.target.name === "password"){
+            const uppercaseRegExp   = /(?=.*?[A-Z])/;
+            const lowercaseRegExp   = /(?=.*?[a-z])/;
+            const digitsRegExp      = /(?=.*?[0-9])/;
+            const specialCharRegExp = /(?=.*?[#?!@$%^&*-.,])/;
+            const minLengthRegExp   = /.{10,}/;
+
+            const passwordInputValue = e.target.value
+            const passwordLength =      passwordInputValue.length;
+            const uppercasePassword =   uppercaseRegExp.test(passwordInputValue);
+            const lowercasePassword =   lowercaseRegExp.test(passwordInputValue);
+            const digitsPassword =      digitsRegExp.test(passwordInputValue);
+            const specialCharPassword = specialCharRegExp.test(passwordInputValue);
+            const minLengthPassword =   minLengthRegExp.test(passwordInputValue);
+          
+        
+            if(passwordLength===0){
+                    setPassLength(true)
+            }
+            else{
+                setPassLength(false)
+            }
+            
+            if(!uppercasePassword){
+                    setPassUpper(true)
+            }
+            else{
+                setPassUpper(false)
+            }
+            
+            if(!lowercasePassword){
+                   setPassLower(true)
+            }
+            else {
+                setPassLower(false)
+            }
+            
+            if(!digitsPassword){
+                  setPassDigit(true)
+            }
+            else{
+                setPassDigit(false)
+            }
+            
+            if(!specialCharPassword){
+                setPassSpecial(true)
+            }
+            else{
+                setPassSpecial(false)
+            }
+            if(!minLengthPassword){
+                  setErrorMessage(true)
+            }
+            else {
+                setErrorMessage(false)
+            }
+            
+
+
+
             if(e.target.value !== userDetail.verify){
                 setPassError(true);
             }
@@ -113,32 +233,14 @@ export default function Signup(){
                 setPassError(false);
             }
 
-            if(e.target.value.length < 10){
-                setErrorMessage(true)
-            }
-            else if(e.target.value.length >= 10){
-                setErrorMessage(false)
-            }
 
-            if(passError === false && errorMessage === false){
-                setSubmitBttn(true)
-            }
-            else{
-                setSubmitBttn(false)
-            }
         }
-      
-       
+
+
     }
 
-    console.log(passError)
-    console.log(errorMessage)
-    console.log(passEmail)
-    console.log(emailLength)
-
-    
-
     console.log(userDetail);
+  
 
 
 
@@ -154,7 +256,7 @@ export default function Signup(){
 
         <section className="flex justify-between mt-8">
             <button className="dormant">
-           <Link to="/">Login</Link>
+           <Link to="/signin">Login</Link>
             </button>
 
             <button className="active">
@@ -171,11 +273,11 @@ export default function Signup(){
             type="text" 
             name="email" 
             placeholder="Jaycass50@gmail.com" 
-            onChange={handleChange}/>
+            onChange={handleChange}
+            />
             <label className="text-sm block text-white" htmlFor="">email</label>
-            {passEmail && <span className="text-xs block text-secondary-100">email already in use</span>}
-            {emailLength && <span className="text-xs block text-secondary-100">email field cannot be empty</span>}
-            {email.error && <span className="text-xs block text-secondary-100">please enter a valid email</span>}
+            {emailExist && <span className="text-xs block text-secondary-100">email already exists</span>}
+            {passEmail && <span className="text-xs block text-secondary-100">enter a valid email</span>}
         </div>
         <div className="w-full mb-4">
             <input 
@@ -183,7 +285,8 @@ export default function Signup(){
             name="username" 
             type="text" 
             placeholder="@ahm_ehiz" 
-            onChange={handleChange}/>
+            onChange={handleChange}
+            />
             <label className="text-sm block text-white" htmlFor="username">username</label>
             {passError && <span className="text-xs block text-secondary-100">username is already taken</span>}
         </div>
@@ -193,12 +296,22 @@ export default function Signup(){
             name="password" 
             type="password" 
             placeholder="********" 
-            onChange={handleChange}/>
+            onChange={handleChange}
+            // onBlur={handleBlur}
+            />
             <label className="text-sm block text-white" htmlFor="">password</label>
-            {passError && <span className="text-xs block text-red-600">must 
-            include at least a letter, a number and one unique symbol</span>}
-            {errorMessage && <span className="text-xs block text-red-600">must be 
+            {passError && <span className="text-xs block text-secondary-100">passwords do not match</span>}
+            {passLength && <span className="text-xs block text-secondary-100">password cannot be empty</span>}
+            {passUpper && <span className="text-xs block text-secondary-100">password must contain
+             at least one Uppercase e.g 'A'</span>}
+            {passLower && <span className="text-xs block text-secondary-100">password must contain
+            at least one lowercase e.g 'b'</span>}
+            {passSpecial && <span className="text-xs block text-secondary-100">password must contain
+            at least one special character e.g ".,/"</span>}
+            {errorMessage && <span className="text-xs block text-secondary-100">must be 
             more than 10 characters</span>}
+            {passDigit && <span className="text-xs block text-secondary-100">password contain at least one digit</span>}
+
         </div>
         <div className="w-full mb-4">
             <input 
@@ -206,15 +319,17 @@ export default function Signup(){
             name="verify" 
             type="password" 
             placeholder="confirm password" 
-            onChange={handleChange}/>
+            onChange={handleChange}
+            // onBlur={handleBlur}
+            />
             <label className="text-sm block text-white" htmlFor="">confirm password</label>
-            {passError && <span className="text-xs text-red-600">passwords do not match</span>}
+            {passError && <span className="text-xs text-secondary-100">passwords do not match</span>}
         </div>
         </form>
         
-        {/* {passError === false ? 'form' : 'text-lg bg-black'} */}
+        <span className="text-lg font-bold self-center text-white">{popError}</span>
 
-       <button onClick={handleSubmit} className="landing-bttn self-center mt-4 mb-16">Sign Up</button>
+       <button onClick={handleSubmit}  className= "landing-bttn self-center mt-4 mb-16">Sign Up</button>
 
 
         

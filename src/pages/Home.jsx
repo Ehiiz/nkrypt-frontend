@@ -5,11 +5,12 @@ import Trending from "../macro-components/Trending";
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import Axios from 'axios';
-import api from "../api/posts";
-import useSWR from 'swr';
+import {useNavigate} from "react-router-dom";
+
 
 
 export default function Home(){
+    const navigate = useNavigate();
 
     const [homedata, setHomeData] = useState([]);
 
@@ -20,34 +21,24 @@ export default function Home(){
     // if (!data) return <div>loading...</div>
 
 
-
-//     const fetchItems = async() =>{
-//         const data = await fetch('/home');
-//         const hdata = await data.json();
-//         console.log(hdata);
-//         setHomeData([...hdata])
-
-// }
-
-// const fetchUsers = async() =>{
-//     try{
-//         const response =  await api.get('/home')
-//         setHomeData([...response.data.data])
-//     }
-//     catch(err){
-
-//     }
-// }
-
-
     useEffect(()=>{
-//         fetchUsers() 
-//     }
+
               
        
         Axios.get('/home')
-        .then(function(response){
-            setHomeData([...response.data.data]);
+        .then(function(res){
+            // const status = res.data.status;
+            // console.log(status)
+            console.log(res)
+            // if (error){
+            //     navigate('/')
+            //     }
+            //     else{
+            //         navigate('/')
+            //     }
+            // console.log(res)
+            // setHomeData([...res.data]);
+          
         })
         .catch(function(error){
             console.log(error);
@@ -59,10 +50,7 @@ export default function Home(){
        
     ,[])
 
-
-
   
-    console.log(homedata);
 
     const navcolor = {
         home:"fill-primary",
@@ -88,6 +76,7 @@ export default function Home(){
                    success={homedata.success}
                    failed={homedata.failure}
                    comments={homedata.comment} 
+                   id={homedata._id}
           />
 
           )}

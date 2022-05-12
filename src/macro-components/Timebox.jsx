@@ -3,13 +3,14 @@ import Microicon from "../micro-components/Microicon";
 import {ReactComponent as Exclaim} from "../svg/Exclamation Mark.svg";
 import {ReactComponent as Achievement} from "../svg/Achievement.svg";
 import {ReactComponent as Chat} from "../svg/uil_comments-alt.svg";
+import {Link} from "react-router-dom";
 
 
 
-export default function Timebox({username, title, date, time, success, failed, comments}){
+export default function Timebox({username, title, date, time, success, failed, comments, id}){
 
     return (
-        <div className="timeline-box">
+        <Link className="timeline-box" to={`/krypt/${id}`}>
              <div className="flex justify-between mt-2">
             <Microicon 
              date={date}
@@ -41,6 +42,6 @@ export default function Timebox({username, title, date, time, success, failed, c
           </section>
         
              
-        </div>
+        </Link>
     )
 }

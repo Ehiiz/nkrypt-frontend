@@ -25,11 +25,11 @@ function App() {
       <Router>
        <Routes>
         <Route path="/profile" exact element={<Profile />}/>
-        <Route path="/" exact element={<Signin />}/>
+        <Route path="/signin" exact element={<Signin />}/>
         <Route path="/signup" exact element={<Signup />}/>
         <Route path="/home" exact element={<Home />}/> 
         <Route path="/notifications" exact element={<Notifications />}/>
-        <Route path="/kryptpage" exact element={<Landing />}/>
+        <Route path="/krypt/:id" exact element={<Landing />}/>
         <Route path="/setlock" exact element={<Setlock />}/>
         <Route path="/quiz" exact element={<Quiz />}/>
         <Route path="/passcode" exact element={<Passcode />}/>
