@@ -11,8 +11,11 @@ import {ReactComponent as Photo} from "../svg/gallery.svg";
 import {ReactComponent as Text} from "../svg/Text File.svg"
 import { useEffect, useState } from "react";
 import Axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 export default function Landing(){
+
+    const navigate = useNavigate();
 
     const [krypt, setKrypt] = useState({title : "", success : "", failure : "", comment : "", content:""})
     
@@ -22,8 +25,6 @@ export default function Landing(){
         profile:"fill-secondary-900",
     }
   
-
-
 
     const {id} = useParams();
 
@@ -50,7 +51,7 @@ export default function Landing(){
             <Header />
             <section className="land">
                 <div className="flex justify-between">
-                    <h2 className="land-title">GRANDE KRYPT</h2> 
+                    <h2 className="land-title">{krypt.title}</h2> 
                     <div className="flex justify-end">
                         <Audio />
                        <Text />
@@ -59,7 +60,7 @@ export default function Landing(){
                 </div>
                 
                 <p className="text-white">This is the text-based Krypt by</p>
-                <p className="text-secondary-400">@jayesse</p>
+                <p className="text-secondary-400">{krypt.creator}</p>
               
                 <section className="flex justify-between mt-3">
                      <div className="land-con">

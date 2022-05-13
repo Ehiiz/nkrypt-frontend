@@ -1,23 +1,22 @@
 import Header from "../core-components/Header";
 import Nav from "../core-components/Nav";
 import {ReactComponent as Edit} from '../svg/bx_edit.svg'
-import Axios from 'axios'
+import Axios from 'axios';
+import { useNavigate} from 'react-router-dom';
+import {useState} from 'react';
 
 export default function Settings(){
 
+    const navigate = useNavigate();
+
+    const [profileData, setProfileData] = useState([])
+
     Axios.get('/settings')
     .then(function(res){
-        // const status = res.data.status;
-        // console.log(status)
+        const status = res.data.status;
+        console.log(status)
         console.log(res)
-        // if (error){
-        //     navigate('/')
-        //     }
-        //     else{
-        //         navigate('/')
-        //     }
-        // console.log(res)
-        // setHomeData([...res.data]);
+        setProfileData([...res.data]);
       
     })
     .catch(function(error){

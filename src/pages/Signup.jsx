@@ -34,20 +34,21 @@ export default function Signup(){
 
     
       
-      //Data Posting Function
-    // useEffect(() => {
-    //     Axios.get("/")
-    //     .then(function (response) {
+    //   Data Posting Function
+    useEffect(() => {
+        Axios.get("/signup")
+        .then(function (response) {
+            console.log(response)
 
-    //         setUsersDeets([...response.data])
-    //     })
-    //     .catch(function (error) {
-    //         console.log(error);
-    //     })
-    //     .then(function(){
+            // setUsersDeets([...response.data])
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+        .then(function(){
 
-    //     })
-    // },[])
+        })
+    },[])
 
 
 
@@ -70,7 +71,6 @@ export default function Signup(){
                                                      console.log("Baba na master")
                                                      
                                     const payload = {
-                                    
                                         userData: {email, username, password}
                                     }
                                 
@@ -81,8 +81,9 @@ export default function Signup(){
                                             console.log(res);
                                             const status = res.data.status;
                                             console.log(res.data)
+                                            console.log(status)
                                             if (status === "success"){
-                                                navigate('/home')
+                                                navigate('/')
                                                 }
                                                 else{
                                                     navigate('/signin')

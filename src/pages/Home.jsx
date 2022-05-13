@@ -14,41 +14,22 @@ export default function Home(){
 
     const [homedata, setHomeData] = useState([]);
 
-    // const fetcher = (...url) => fetch(...url).then(res => res.json())
 
-    // const { data, error } = useSWR('http://localhost:4000/home', fetcher);
-    // if (error) return <div>failed to load</div>
-    // if (!data) return <div>loading...</div>
+    useEffect(() => {
+        Axios.get("/home")
+        .then(function (response) {
+            console.log(response)
 
-
-    useEffect(()=>{
-
-              
-       
-        Axios.get('/home')
-        .then(function(res){
-            // const status = res.data.status;
-            // console.log(status)
-            console.log(res)
-            // if (error){
-            //     navigate('/')
-            //     }
-            //     else{
-            //         navigate('/')
-            //     }
-            // console.log(res)
-            // setHomeData([...res.data]);
-          
+            setHomeData([...response.data.data])
         })
-        .catch(function(error){
+        .catch(function (error) {
             console.log(error);
         })
         .then(function(){
 
         })
-    }
-       
-    ,[])
+    },[])
+
 
   
 

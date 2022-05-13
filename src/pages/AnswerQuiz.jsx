@@ -60,11 +60,6 @@ export default function AnswerQuiz(){
             Number = {ehisQ.numba}
              />
          )}
-    
-    
-        
-        
-        
         
         </section>
 

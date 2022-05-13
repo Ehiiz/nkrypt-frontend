@@ -1,11 +1,11 @@
 import {Link} from "react-router-dom";
-export default function Nav({home, notification, profile}){
+export default function Nav({home, notification, profile, user}){
 
 
     return(
         <nav className="flex text-xs items-end justify-evenly mt-4 fixed bottom-0 left-0 right-0 bg-secondary-600 pt-3">
             <div className="nav-block">
-            <Link to="/home" className="nav">          
+            <Link to="/" className="nav">          
              <svg width="30" height="35" viewBox="0 0 36 38" className={`${home}`} xmlns="http://www.w3.org/2000/svg">
             <path d="M12.3171 35.0159V29.3591C12.3171 27.9151 13.4913 26.7445 14.9396 26.7445H20.2342C20.9297 26.7445 21.5968 27.0199 22.0886 27.5103C22.5804 28.0006 22.8567 28.6657 22.8567 29.3591V35.0159C22.8523 35.6162 23.0884 36.1935 23.5127 36.6195C23.9369 37.0456 24.5142 37.2852 25.1164 37.2852H28.7285C30.4155 37.2895 32.035 36.6245 33.2294 35.4367C34.4239 34.2489 35.0952 32.6361 35.0952 30.9542V14.8389C35.0952 13.4803 34.4911 12.1915 33.4458 11.3198L21.1578 1.53557C19.0203 -0.179943 15.9577 -0.124554 13.884 1.66713L1.87649 11.3198C0.781781 12.1658 0.127487 13.4584 0.0951538 14.8389V30.9377C0.0951538 34.4433 2.94559 37.2852 6.46179 37.2852H9.99148C11.2422 37.2852 12.2586 36.2792 12.2676 35.0323L12.3171 35.0159Z"/>
             </svg>
@@ -21,7 +21,7 @@ export default function Nav({home, notification, profile}){
             </Link>
             </div>
             <div className="nav-block">
-            <Link to="/profile" className="nav">
+            <Link to='/profile' className="nav">
             <svg width="30" height="35" viewBox="0 0 31 39" className={`${profile}`} xmlns="http://www.w3.org/2000/svg">
                 <path d="M15.0952 25.763C23.2301 25.763 30.0952 27.1026 30.0952 32.2706C30.0952 37.4406 23.1851 38.7326 15.0952 38.7326C6.9621 38.7326 0.0951538 37.3931 0.0951538 32.225C0.0951538 27.0551 7.00524 25.763 15.0952 25.763ZM15.0952 0.732574C20.606 0.732574 25.0214 5.20522 25.0214 10.7856C25.0214 16.3659 20.606 20.8405 15.0952 20.8405C9.58621 20.8405 5.16893 16.3659 5.16893 10.7856C5.16893 5.20522 9.58621 0.732574 15.0952 0.732574Z"/>
                 </svg>

@@ -24,7 +24,7 @@ function App() {
     <div className="font-poppins bg-secondary-600">
       <Router>
        <Routes>
-        <Route path="/profile" exact element={<Profile />}/>
+        <Route path="/profile/:id" exact element={<Profile />}/>
         <Route path="/signin" exact element={<Signin />}/>
         <Route path="/signup" exact element={<Signup />}/>
         <Route path="/home" exact element={<Home />}/> 

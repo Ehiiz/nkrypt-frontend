@@ -1,4 +1,5 @@
 import Kryptprofile from "../micro-components/Kryptprofile";
+import ProfileOne from "../img/Rectangle 42.png"
 
 export default function Trending(){
 
@@ -90,7 +91,7 @@ const textsize = "text-sm"
     return(
         <div className="bg-secondary-600 flex overflow-x-scroll scrollbar-hide mt-16 px-2 pb-4">
          {profileDetails.map(profile => <Kryptprofile
-            image={profile.image}
+            image={ProfileOne}
             username={profile.username}
             boxstyle={boxstyle}
             imgstyle={imgstyle}
