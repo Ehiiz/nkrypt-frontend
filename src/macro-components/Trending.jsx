@@ -1,83 +1,91 @@
 import Kryptprofile from "../micro-components/Kryptprofile";
-import ProfileOne from "../img/Rectangle 42.png"
+import ProfileOne from "../img/Rectangle 42.png";
+import ProfileTwo from "../img/Rectangle 43.png";
+import ProfileThree from "../img/Rectangle 44.png";
+import ProfileFour from "../img/Rectangle 45.png";
+import ProfileFive from "../img/Rectangle 46.png";
+import ProfileSix from "../img/Rectangle 47.png";
+import ProfileSeven from "../img/Rectangle 48.png";
+import ProfileEight from "../img/Rectangle 49.png";
+import ProfileNine from "../img/Rectangle 50.png";
 
 export default function Trending(){
 
     const profileDetails = [
         {
-            image : 'img/Rectangle 47.png', 
+            image : ProfileOne, 
             username : '@ahm_ehiz',
     
         },
         {
-            image : 'img/Rectangle 46.png', 
+            image : ProfileTwo,  
             username : '@juga',
     
         },
         {
-            image : 'img/Rectangle 43.png', 
+            image : ProfileThree, 
             username : '@crazilee',
     
         },
         {
-            image : 'img/Rectangle 44.png', 
+            image : ProfileFour,  
             username : '@tamiyu',
     
         },
         {
-            image : 'img/pasted image 0.png', 
+            image : ProfileFive, 
             username : '@kazzi',
     
         },
         {
-            image : 'img/pasted image 0 (1).png', 
+            image : ProfileSix,  
             username : '@puffboy',
     
         },
         {
-            image : 'img/pasted image 0 (2).png', 
+            image : ProfileSeven, 
             username : '@mojojo',
     
         },
         {
-            image : 'img/Rectangle 45.png', 
+            image : ProfileEight, 
             username : '@kpekenle',
     
         },
         {
-            image : 'img/Rectangle 46.png', 
+            image : ProfileNine, 
             username : '@tomisoon',
     
         },
         {
-            image : 'img/pasted image 0 (1).png', 
+            image : ProfileOne, 
             username : '@blanche',
     
         },
         {
-            image : 'img/Rectangle 47.png', 
+            image : ProfileNine, 
             username : '@caserita',
     
         },
         {
-            image : 'img/pasted image 0.png', 
+            image : ProfileSix, 
             username : '@seunowa',
     
         },
         {
-            image : 'img/pasted image 0 (2).png', 
+            image : ProfileThree, 
             username : '@fofo1',
     
         },   {
-            image : 'img/pasted image 0 (1).png', 
+            image : ProfileFour, 
             username : '@timmytuna',
     
         },   {
-            image : 'img/Rectangle 47.png', 
+            image : ProfileOne, 
             username : '@savvy',
     
         },   {
-            image : 'img/Rectangle 42.png', 
+            image : ProfileTwo, 
             username : '@garcia',
     
         },
@@ -91,7 +99,7 @@ const textsize = "text-sm"
     return(
         <div className="bg-secondary-600 flex overflow-x-scroll scrollbar-hide mt-16 px-2 pb-4">
          {profileDetails.map(profile => <Kryptprofile
-            image={ProfileOne}
+            image={profile.image}
             username={profile.username}
             boxstyle={boxstyle}
             imgstyle={imgstyle}

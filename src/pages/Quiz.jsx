@@ -2,59 +2,15 @@ import { useState } from "react";
 import Header from "../core-components/Header";
 import Nav from "../core-components/Nav";
 import Questions from "../macro-components/Questions";
-import {Link} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {ReactComponent as Add} from "../svg/carbon_add-filled.svg"
+import Axios from "axios";
+
 
 export default function Quizpage(){
 
-
-
-
-//   const [values, setValues] = useState({ val: []});
-
-//   function createInputs() {
-//     return values.val.map((el, i) =>
-//       <div key={i}>
-//         <input className="text-black mb-4 border-red-300 " type="text" value={el||''} onChange={handleChange.bind(i)} />
-//         <input type='button' value='remove' name={i} onClick={removeClick.bind(i)} />
-//       </div>
-//     );
-//   }
-
-// function handleChange(event) {
-//   let vals = [...values.val];
-//   vals[this] = event.target.value;
-//   setValues({ val: vals });
-//   console.log(values);
-// }
-
-// const addClick = () => {
-//   setValues({ val: [...values.val, '']})
-// }
-
-// const removeClick = (event) => {
-//   let vals = [...values.val];
-//   let index = Number(event.target.name);
-//   vals.splice(index, 1);
-//   setValues({ val: vals });
-// }
-
-// const handleSubmit = event => {
-//   alert('A name was submitted: ' + values.val.join(', '));
-//   event.preventDefault();
-// }
-
-// return (
-//   <form className="w-full text-white bg-secondary-600 h-screen flex flex-col items-center" onSubmit={handleSubmit}>
-//       {createInputs()}
-//       <input type='button' value='add more' onClick={addClick} />
-//       <input type="submit" value="Submit" />
-//   </form>
-// );
-
-
-
-//Original App code
+const {id} = useParams();
+const navigate = useNavigate();
 
 
     const [questionBox, setQuestionBox] = useState([{ques: "", ans:"", answer:""}])
@@ -81,6 +37,30 @@ export default function Quizpage(){
       setQuestionBox(newQuestionBox)
 ;    }
 
+
+      
+const sendData = () => {
+  const payload = {questionBox}
+  console.log(questionBox);
+  console.log(payload);
+  Axios.post(`/quiz/${id}`, payload)
+.then(res => {
+        console.log(res);
+        const status = res.data.status;
+        if (status === "success"){
+            navigate(`/share/${id}`)
+            }
+            else{
+               window.location.reload();
+            }
+    }).catch(error => {
+        console.log(error);
+    })
+}
+
+const handleSubmit = () =>{
+  sendData();
+}
 
     return(
         
@@ -126,10 +106,8 @@ export default function Quizpage(){
         </div>
       
 
-        <button className="sub-bttn"> 
-         <Link to="/success">
+        <button onClick={handleSubmit} className="sub-bttn"> 
          Submit
-         </Link>
         </button>
         </section>
       

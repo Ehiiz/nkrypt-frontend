@@ -30,9 +30,9 @@ export default function Landing(){
 
     useEffect(() => {
                 console.log("UseEffect started");
+                console.log(id)
                 Axios.get(`/krypt/${id}`)
                 .then(function (response) {
-                    console.log(response.data.data);
                   setKrypt({...response.data.data})
                 })
                 .catch(function (error) {

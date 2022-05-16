@@ -1,12 +1,16 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import Header from "../core-components/Header"
 import Multi from "../macro-components/Multi"
 import Nav from "../core-components/Nav"
 import {ReactComponent as Add} from "../svg/carbon_add-filled.svg"
+import Axios from 'axios';
 
 
 export default function Choice(){
+
+  const {id} = useParams();
+  const navigate = useNavigate();
 
     const [multibox, setMultibox] = useState([{quest:"", opt1:"friday", opt2:"", opt3:"",  answer:""}])
 
@@ -14,23 +18,36 @@ export default function Choice(){
         setMultibox([...multibox, {quest:"", opt1:"", opt2:"", opt3:"", answer:""}])
       }
 
-      // const [multipleQue, setMultipleQue] = useState({ quest:"", opt1:"", opt2: "", opt3:"",  answer:  ""})
 
+      const sendData = () => {
+        const payload = {multibox}
+        console.log(multibox);
+        console.log(payload);
+        Axios.post(`/choice/${id}`, payload)
+      .then(res => {
+              console.log(res);
+              const status = res.data.status;
+              if (status === "success"){
+                  navigate(`/share/${id}`)
+                  }
+                  else{
+                     window.location.reload();
+                  }
+          }).catch(error => {
+              console.log(error);
+          })
+    }
 
-      //  console.log(multipleQue);
-      // const updateMultipleQue = (e) => {
-      //     const {name, value, type, checked} = e.target;
-      //      setMultipleQue({...multipleQue,  [name] : value} )
-      //     console.log(value); 
-      // }
-    
       const handleChange = (i,e) =>{
         let newMultibox = [...multibox];
-        console.log(e.target)
         console.log(e.target.value)
         newMultibox[i][e.target.name] = e.target.value;
         setMultibox(newMultibox)
         console.log(multibox)
+      }
+
+      const handleSubmit = (e) => {
+        sendData();
       }
 
      
@@ -75,10 +92,8 @@ export default function Choice(){
         </div>
       
 
-        <button className="sub-bttn"> 
-         <Link to="/success">
+        <button className="sub-bttn" onClick={handleSubmit}> 
          Submit
-         </Link>
         </button>
 
         </section>

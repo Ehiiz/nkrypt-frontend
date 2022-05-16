@@ -5,7 +5,8 @@ import {Link, useParams} from "react-router-dom";
 import Profilebox from "../macro-components/Profilebox";
 import {ReactComponent as Settings} from "../svg/Setting.svg"
 import Axios from 'axios';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import ProfileNine from "../img/Rectangle 50.png";
 
 export default function Profile(){
 
@@ -14,13 +15,14 @@ export default function Profile(){
     const [profileDetails, setProfileDetails] = useState({})
     const [profileData, setProfileData] = useState([])
 
-    Axios.get(`/profile/${id}`)
+useEffect(() => {
+    Axios.get(`/profile`)
     .then(function(res){
-        const status = res.data.status;
-        console.log(status)
+        // const status = res.data.s;
+        // console.log(status)
         console.log(res)
-        setProfileData([...res.data.krypt]);
-        setProfileDetails({...res.data.user})
+        setProfileData([...res.data.kryptdata]);
+        setProfileDetails({...res.data.loggeduser})
       
     })
     .catch(function(error){
@@ -29,6 +31,9 @@ export default function Profile(){
     .then(function(){
 
     })
+},[])
+console.log(profileData)
+console.log(profileDetails)
    
    
     // const profileDetails = {
@@ -55,7 +60,7 @@ export default function Profile(){
             title = {profile}
          />
         <Kryptprofile
-        image = {profileDetails.image}
+        image = {ProfileNine}
         username = {profileDetails.username}
         imgstyle={imgstyle}
         boxstyle= {boxstyle}
@@ -72,8 +77,8 @@ export default function Profile(){
         </section>
         <section className="mb-16 w-full overflow-auto">
       {profileData.map(proData=> <Profilebox
-        time={proData.time}
-        date={proData.date}
+        time={profileData.time}
+        date={profileData.date}
         title={proData.title}
       />)}
         </section>

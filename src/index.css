@@ -116,7 +116,7 @@
 }
 
 .quest{
-    @apply rounded-2xl bg-secondary-500 placeholder:pl-4 h-10;
+    @apply border-white border-2 rounded-2xl bg-secondary-500 placeholder:pl-4 h-10;
 }
 
 .share-sec{

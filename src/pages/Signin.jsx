@@ -33,10 +33,11 @@ export default function Signin(){
                 console.log(res.data.status)
                 const status = res.data.status;
                 if (status === "success"){
-                navigate('/')
+                navigate('/home')
                 }
                 else if (status === "failure"){
-                    navigate('/signin')
+                    // window.location.reload();
+                //    navigate('/signup')
                 }
             }).catch(error => {
                 console.log(error);

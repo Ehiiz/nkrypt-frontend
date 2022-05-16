@@ -83,7 +83,7 @@ export default function Signup(){
                                             console.log(res.data)
                                             console.log(status)
                                             if (status === "success"){
-                                                navigate('/')
+                                                navigate('/home')
                                                 }
                                                 else{
                                                     navigate('/signin')

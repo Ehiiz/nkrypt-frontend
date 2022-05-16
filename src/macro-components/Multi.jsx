@@ -97,7 +97,7 @@ export default function Multi({number, index, opt1, opt2, opt3, answer, quest, h
         />
        
         <label 
-            className="self-end pr-2 text-primary text-lg bg-white py-1 px-1 rounded-full mt-1 font-bold" 
+            className="self-end  text-white text-lg  rounded-full mt-1 font-bold" 
             htmlFor="opt4">
            Answer
         </label>

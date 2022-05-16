@@ -24,19 +24,19 @@ function App() {
     <div className="font-poppins bg-secondary-600">
       <Router>
        <Routes>
-        <Route path="/profile/:id" exact element={<Profile />}/>
+        <Route path="/profile" exact element={<Profile />}/>
         <Route path="/signin" exact element={<Signin />}/>
         <Route path="/signup" exact element={<Signup />}/>
         <Route path="/home" exact element={<Home />}/> 
         <Route path="/notifications" exact element={<Notifications />}/>
         <Route path="/krypt/:id" exact element={<Landing />}/>
-        <Route path="/setlock" exact element={<Setlock />}/>
-        <Route path="/quiz" exact element={<Quiz />}/>
-        <Route path="/passcode" exact element={<Passcode />}/>
+        <Route path="/setlock/:id" exact element={<Setlock />}/>
+        <Route path="/quiz/:id" exact element={<Quiz />}/>
+        <Route path="/passcode/:id" exact element={<Passcode />}/>
         <Route path="/unlocked" exact element={<Unlocked />}/>
         <Route path="/create" exact element={<Createkrypt />}/>
-        <Route path="/choice" exact element={<Multichoice />} />
-        <Route path="/success" exact element={<Success />} />
+        <Route path="/choice/:id" exact element={<Multichoice />} />
+        <Route path="/share/:id" exact element={<Success />} />
         <Route path="/settings" exact element={<Settings />} />
         <Route path="/answerpass" exact element={<Answerpass />} />
         <Route path="/answerquiz" exact element={<AnswerQuiz />} />
