@@ -73,6 +73,7 @@ export default function Choice(){
         <Header />
         <section className="choice-sec">
         <div className="w-full flex flex-col items-center">
+        <h1 className="text-white text-lg">Click on one of the buttons below the options to select an answer</h1>
         {multibox.map((multi, index) => (<Multi
            number = {index + 1}
            index ={index}

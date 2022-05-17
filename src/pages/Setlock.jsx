@@ -17,6 +17,9 @@ export default function Setlock (){
 
     const [lockValue, setLockValue] = useState("")
     const [finalValue, setFinalValue] = useState()
+    const [quizLive, setQuizLive] = useState(true);
+    const [choiceLive, setChoiceLive] = useState(true);
+    const [passLive, setPassLive] = useState(true);
 
     console.log(lockValue)
 
@@ -52,26 +55,46 @@ export default function Setlock (){
         setFinalValue(lockValue)
     }
 
+   const handleClick = e => {
+      setLockValue(e.target.value)
+      if (e.target.value === "Quiz"){
+         setQuizLive(false)
+         setPassLive(true)
+         setChoiceLive(true)
+      } else if (e.target.value === "Passcode"){
+        setQuizLive(true)
+        setPassLive(false)
+        setChoiceLive(true)
+     }
+     else if (e.target.value === "Multiple"){
+        setQuizLive(true)
+        setPassLive(true)
+        setChoiceLive(false)   
+     }
+
+    }
+
+    
     return (
         <div className="page">
             <Header />
             <section className="flex flex-col items-center pt-40">
            
-          <div value="Passcode" className="lock-bttn"  onClick={e=> setLockValue("passcode")}>
+          <button value="Passcode"  className={passLive ? "lock-bttn bg-primary text-white" : "lock-bttn border-2 border-white shadow "}  onClick={handleClick}>
             <Password />
-            <p className="self-center ml-4">Passcode</p>
-          </div>
+            <button value="Passcode" onClick={handleClick} className="self-center ml-4">Passcode</button>
+          </button>
           
 
-        <div value="Quiz" className="lock-bttn" onClick={e=> setLockValue("quiz")}>
+        <button value="Quiz" className={quizLive ? "lock-bttn bg-primary text-white" : "lock-bttn border-2 border-white shadow "} onClick={handleClick}>
             <Quiz />
-            <p className="self-center ml-4">Quiz</p>
-        </div>
+            <button value="Quiz" className="self-center ml-4" onClick={handleClick}>Quiz</button>
+        </button>
        
-        <div value="Multiple"  className="lock-bttn" onClick={e=> setLockValue("multiple")}>
+        <button value="Multiple"  className={choiceLive ? "lock-bttn bg-primary text-white" : "lock-bttn border-2 border-white shadow "} onClick={handleClick}>
            <Choices />
-          <p className="text-xs ml-4">Multiple Choice Questions</p>
-        </div>
+          <button className="self-center ml-4" value="Multiple" onClick={handleClick}>Multiple Choice Questions</button>
+        </button>
 
         
         <button onClick={handleSubmit} className="mt-2 shadow border-1 sub-bttn"> 
