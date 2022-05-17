@@ -12,10 +12,10 @@ export default function Choice(){
   const {id} = useParams();
   const navigate = useNavigate();
 
-    const [multibox, setMultibox] = useState([{quest:"", opt1:"friday", opt2:"", opt3:"",  answer:""}])
+    const [multibox, setMultibox] = useState([{question:"", option1:"", option2:"", option3:"", option4:"",  answer:""}])
 
     const addMulti = () => {
-        setMultibox([...multibox, {quest:"", opt1:"", opt2:"", opt3:"", answer:""}])
+        setMultibox([...multibox, {question:"", option1:"", option2:"", option3:"", option4:"", answer:""}])
       }
 
 
@@ -50,6 +50,8 @@ export default function Choice(){
         sendData();
       }
 
+      console.log(multibox);
+
      
       const removeQuestion = (i) => {
         let newMultibox = [...multibox];
@@ -74,11 +76,12 @@ export default function Choice(){
         {multibox.map((multi, index) => (<Multi
            number = {index + 1}
            index ={index}
-           opt1={multibox.opt1}
-           opt2={multibox.opt2}
-           opt3={multibox.opt3}
-           answer={multibox.answer}
-           quest={multibox.quest}
+           option1={multi.option1}
+           option2={multi.option2}
+           option3={multi.option3}
+           option4={multi.option4}
+           answer={multi.answer}
+           question={multi.question}
            handleChange={handleChange}
          
 

@@ -38,9 +38,9 @@ function App() {
         <Route path="/choice/:id" exact element={<Multichoice />} />
         <Route path="/share/:id" exact element={<Success />} />
         <Route path="/settings" exact element={<Settings />} />
-        <Route path="/answerpass" exact element={<Answerpass />} />
-        <Route path="/answerquiz" exact element={<AnswerQuiz />} />
-        <Route path="/answermulti" exact element={<Answermulti />}/>
+        <Route path="/p-unlock/:id" exact element={<Answerpass />} />
+        <Route path="/q-unlock/:id" exact element={<AnswerQuiz />} />
+        <Route path="/m-unlock/:id" exact element={<Answermulti />}/>
        </Routes>
     </Router>
 

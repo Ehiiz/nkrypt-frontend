@@ -18,7 +18,8 @@ export default function Passcodepage(){
     } 
 
     const sendData = () => {
-        const payload = {passCell}
+        const finalCell = [passCell]
+        const payload = {finalCell}
         console.log(passCell);
         console.log(payload);
         Axios.post(`/passcode/${id}`, payload)

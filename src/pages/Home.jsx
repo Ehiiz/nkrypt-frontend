@@ -19,8 +19,9 @@ export default function Home(){
         Axios.get("/home")
         .then(function (response) {
             console.log(response)
+            const newOrder = response.data.data.reverse();
 
-            setHomeData([...response.data.data])
+            setHomeData([...newOrder])
         })
         .catch(function (error) {
             console.log(error);
@@ -49,7 +50,7 @@ export default function Home(){
             <Trending />
             <div className="px-4 mb-18 pb-36 h-fit bg-secondary-600">
            
-            {homedata.map(homedata=> <Timebox
+            {homedata.reverse().map(homedata=> <Timebox
                    title={homedata.title}
                    username={homedata.username}
                    date={homedata.date}

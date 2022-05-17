@@ -1,4 +1,10 @@
-export default function MultiAnswerBox({index, Number, answer, Question, Option1, Option2, Option3}){
+export default function MultiAnswerBox({index, Number, answer, Question, Option1, Option2, Option3, handleChange}){
+
+    
+    var opt1 = Option1;
+    var opt2 = Option2;
+    var opt3 = Option3;
+    console.log(opt1, opt2, opt3);
 
 
     return (
@@ -11,6 +17,8 @@ export default function MultiAnswerBox({index, Number, answer, Question, Option1
             className="mr-4"
             type="radio" 
             name="answer" 
+            value={opt1}
+            onChange={e => handleChange(index, e)}
         />
        
         <label 
@@ -25,7 +33,9 @@ export default function MultiAnswerBox({index, Number, answer, Question, Option1
         <input 
             type="radio" 
             name="answer" 
-            className="mr-4"   
+            className="mr-4" 
+            value={opt2}  
+            onChange={e => handleChange(index, e)}
         />
        
         <label 
@@ -38,8 +48,9 @@ export default function MultiAnswerBox({index, Number, answer, Question, Option1
         <input 
             type="radio" 
             name="answer" 
-            value=""
+            value={opt3}
             className="mr-4"
+            onChange={e => handleChange(index, e)}
             
         />
        
@@ -54,15 +65,16 @@ export default function MultiAnswerBox({index, Number, answer, Question, Option1
         <input 
             type="radio" 
             name="answer" 
-            value=""
+            value={Option3}
             className="mr-4"
+            onChange={e => handleChange(index, e)}
          
         />
        
         <label 
             className="text-white text-md mt-1 font-bold" 
             htmlFor="opt4">
-         {answer}
+      
         </label>
         </div>
 

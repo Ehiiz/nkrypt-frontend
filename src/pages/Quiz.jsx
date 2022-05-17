@@ -13,7 +13,7 @@ const {id} = useParams();
 const navigate = useNavigate();
 
 
-    const [questionBox, setQuestionBox] = useState([{ques: "", ans:"", answer:""}])
+    const [questionBox, setQuestionBox] = useState([{question: "", answer:""}])
     const navcolor = {
         home:"fill-primary",
         notification:"fill-secondary-900",
@@ -72,23 +72,15 @@ const handleSubmit = () =>{
         <section key={index} className="w-full text-white bg-secondary-600 flex flex-col black pt-16 px-4">
         <p className="multi-num">{index+1}</p>
         <div className="flex flex-col">
-        <input className="quest shadow-md" type="text" name= "ques" placeholder="Type in your question" 
-        value={question.ques} 
+        <input className="quest shadow-md" type="text" name= "question" placeholder="Type in your question" 
+        value={question.question} 
         onChange={e => handleChange(index, e)}/>
         <label className="self-end pr-2" htmlFor="ques">Question</label>
         </div>
         <div className="flex flex-col">
-        <input className="quest mt-3" type="text" name="ans" placeholder="Type in your answer" 
-        value={question.ans} onChange={e => handleChange(index, e)}/>
+        <input className="quest mt-3" type="text" name="answer" placeholder="Type in your answer" 
+        value={question.answer} onChange={e => handleChange(index, e)}/>
         <label className="self-end pr-2" htmlFor="ans">Answer</label>
-        <input 
-         className="self-end" 
-         type="radio" 
-         name="answer"
-         id={question.answer}
-         value={question.ans}
-         onChange={e => handleChange(index, e)}
-        />
         </div>
         {
           index ? <button type="button" onClick={()=> removeQuestion(index)}>Remove</button>

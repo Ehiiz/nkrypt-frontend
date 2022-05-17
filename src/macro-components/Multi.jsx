@@ -1,9 +1,12 @@
 import {useState} from "react";
-export default function Multi({number, index, opt1, opt2, opt3, answer, quest, handleChange}) {
+export default function Multi({number, index, option1, option2, option3, option4, answer, question, handleChange}) {
 
-    
-    
-
+    console.log(option1)
+    var opt1 = option1;
+    var opt2 = option2;
+    var opt3 = option3;
+    var opt4 = option4;
+    console.log(opt1, opt2, opt3, opt4);
 
       return (
         <section className="multi-sec" key={index}>
@@ -13,16 +16,16 @@ export default function Multi({number, index, opt1, opt2, opt3, answer, quest, h
         <input 
         className="quest" 
         type="text" 
-        name="quest" 
+        name="question" 
         placeholder="Type in your question" 
-        value={quest} 
+        value={question} 
         onChange={e =>handleChange(index, e)}
 
         />
         
         <label 
         className="self-end pr-2"
-         htmlFor="quest">Question
+         htmlFor="question">Question
         </label>
        
         
@@ -33,17 +36,24 @@ export default function Multi({number, index, opt1, opt2, opt3, answer, quest, h
         <input 
             className="multi-input" 
             type="text" 
-            name="opt1" 
+            name="option1" 
             placeholder="Type in your answer" 
-            value={opt1} 
+            value={option1} 
             onChange={e =>handleChange(index, e)}
 
+        />
+           <input 
+            className="mr-4"
+            type="radio" 
+            name="answer" 
+            value={option1}
+            onChange={e =>handleChange(index, e)}
         />
     
 
         <label 
             className="self-end pr-2" 
-            htmlFor="opt1">
+            htmlFor="option1">
             Option 1
         </label>
         </div>
@@ -52,18 +62,26 @@ export default function Multi({number, index, opt1, opt2, opt3, answer, quest, h
         <input 
             className="multi-input" 
             type="text" 
-            name="opt2" 
+            name="option2" 
             placeholder="Type in your answer" 
-            value={opt2} 
+            value={option2} 
             onChange={e =>handleChange(index, e)}
             />
+
+<input 
+            className="mr-4"
+            type="radio" 
+            name="answer" 
+            value={option2}
+            onChange={e =>handleChange(index, e)}
+        />
  
 
         
 
         <label 
             className="self-end pr-2" 
-            htmlFor="opt2">
+            htmlFor="option2">
             Option 2
         </label>
         </div>
@@ -72,17 +90,25 @@ export default function Multi({number, index, opt1, opt2, opt3, answer, quest, h
         <input 
             className="multi-input" 
             type="text" 
-            name="opt3" 
+            name="option3" 
             placeholder="Type in your answer" 
-            value={opt3} 
+            value={option3} 
             onChange={e =>handleChange(index, e)}
           />
+
+        <input 
+            className="mr-4"
+            type="radio" 
+            name="answer" 
+            value={option3}
+            onChange={e =>handleChange(index, e)}
+        />
 
         
        
         <label 
              className="self-end pr-2" 
-             htmlFor="opt3">
+             htmlFor="option3">
              Option 3
         </label>
         </div>
@@ -90,21 +116,31 @@ export default function Multi({number, index, opt1, opt2, opt3, answer, quest, h
         <input 
             className="multi-input2" 
             type="text" 
-            name="answer" 
+            name="option4" 
             placeholder="Type in your answer" 
-            value={answer} 
+            value={option4} 
             onChange={e =>handleChange(index, e)}
         />
+
+<input 
+            className="mr-4"
+            type="radio" 
+            name="answer" 
+            value={option4}
+            onChange={e =>handleChange(index, e)}
+        />
+
        
         <label 
-            className="self-end  text-white text-lg  rounded-full mt-1 font-bold" 
+            className="self-end pr-2" 
             htmlFor="opt4">
-           Answer
+           Option 4
         </label>
         </div>
 
         </section>
         
         </section>
+
     )
 }

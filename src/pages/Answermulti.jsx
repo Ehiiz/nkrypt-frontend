@@ -1,11 +1,53 @@
 import Header from "../core-components/Header";
 import Nav from "../core-components/Nav";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import MultiAnswerBox from "../macro-components/MultiAnswerBox";
+import {useState, useEffect} from 'react';
+import Axios from 'axios';
 
 
-export default function AnswerQuiz(){
+export default function Answermulti(){
 
+    const [answerMulti, setAnswerMulti] = useState([{question:"", option1:"", option2:"", option3:"", option4:""}])
+    const [title, setTitle] = useState()
+    const [userQuiz, setUserQuiz] = useState([{answer:""}])
+  
+    const {id} = useParams();
+
+    useEffect(() =>{
+        Axios.get(`/m-unlock/${id}`)
+        .then(function(response){
+            console.log(response);
+            const newtitle = response.data.data.kryptDeets.title;
+            const questData =response.data.data.lockDeets.authenticate;
+            let answerRay = []
+            for (let i = 0; i < questData.length; i++) {
+             var newAns = {answer:""}
+                answerRay.push(newAns)
+            }
+            setUserQuiz(answerRay)
+            setAnswerMulti(questData)
+            setTitle(newtitle)
+        
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error + "This did not get anything");
+          })
+          .then(function () {
+            // always executed
+          });    
+
+    },[])
+
+    const handleChange = (i,e) =>{
+        const {name, value} = e.target
+        let newMultibox = [...userQuiz];
+        newMultibox[i][name] = value;
+        console.log(value)
+        setUserQuiz(newMultibox)
+        console.log(userQuiz)
+      }
 
     //Color For Navigation Bar
     const navcolor = {
@@ -14,72 +56,26 @@ export default function AnswerQuiz(){
         profile:"fill-secondary-900",
     }
 
-    const ehisMulti = [{
-        Question: "What is the name of your father's village",
-        Option1: "Ubiaja",
-        Option2: "Oyomon",
-        Option3: "Benin City",
-        answer: "Kuli",
-        numba : "1"
-    },
-    {
-        Question: "What is the name of your father's village",
-        Option1: "Ubiaja",
-        Option2: "Oyomon",
-        Option3: "Benin City",
-        answer: "Kuli",
-        numba : "2"
-    },
-    {
-        Question: "What is the name of your father's village",
-        Option1: "Ubiaja",
-        Option2: "Oyomon",
-        Option3: "Benin City",
-        answer: "Kuli",
-        numba : "3"
-    },
-    {
-        Question: "What is the name of your father's village",
-        Option1: "Ubiaja",
-        Option2: "Oyomon",
-        Option3: "Benin City",
-        answer: "Kuli",
-        numba : "4"
-    },
-    {
-        Question: "What is the name of your father's village",
-        Option1: "Ubiaja",
-        Option2: "Oyomon",
-        Option3: "Benin City",
-        answer: "Kuli",
-        numba : "5"
-    },
-    {
-        Question: "What is the name of your father's village",
-        Option1: "Ubiaja",
-        Option2: "Oyomon",
-        Option3: "Benin City",
-        answer: "Kuli",
-        numba : "6"
-    },
-]
+    console.log(userQuiz)
+
 
     return(
         <div className="page">
         <Header />
         <section className="flex flex-col px-4 py-4 mt-12 fixed top-0 mb-8 w-full bg-secondary-600 h-full">
-         <h2 className="self-end font-bold text-secondary-900 text-2xl"><span className="text-md font-bold">unlock</span> GRANDE KRYPT</h2> 
+         <h2 className="self-end font-bold text-secondary-900 text-2xl"><span className="text-md font-bold">unlock</span> {title}</h2> 
     
          <section className="text-white overflow-auto scrollbar-hide  rounded-t-2xl flex flex-col bg-secondary-500 w-full mt-1 pt-4 px-4 pb-48 h-128">
 
-         {ehisMulti.map((ehisM, index)=><MultiAnswerBox
-            Question = {ehisM.Question}
-            Number = {ehisM.numba}
-            Option1 = {ehisM.Option1}
-            Option2 = {ehisM.Option2}
-            Option3 = {ehisM.Option3}
-            answer= {ehisM.answer}
+         {answerMulti.map((answerM, index)=><MultiAnswerBox
+            Question = {answerM.question}
+            Number = {index + 1}
+            Option1 = {answerM.option1}
+            Option2 = {answerM.option2}
+            Option3 = {answerM.option3}
             index={index}
+            answer= {userQuiz[index].answer}
+            handleChange= {handleChange}
              />
          )}
          </section>

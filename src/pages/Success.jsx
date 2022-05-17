@@ -1,9 +1,8 @@
 import Header from "../core-components/Header";
 import Nav from "../core-components/Nav";
 import Share from "../macro-components/Share";
-import {Link, useParams} from "react-router-dom"
-import Axios from "axios";
-import {useEffect} from "react"
+import {useParams} from "react-router-dom"
+
 
 export default function Success(){
 
