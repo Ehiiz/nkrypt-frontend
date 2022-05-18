@@ -31,42 +31,43 @@ export default function Setlock (){
     }
 
   //Data Posting Function
-  useEffect(() => {
-    const payload = {finalValue}
-    console.log(finalValue);
-    console.log(payload);
-    Axios.post(`/setlock/${id}`, payload)
-    .then(res => {
-        console.log(res);
-        const next = res.data.lockkrypt.type;
-        if(next === "quiz"){
-            navigate(`/quiz/${id}`)
-        } else if (next === "passcode") {
-            navigate(`/passcode/${id}`)
-        } else if (next === "multiple"){
-            navigate(`/choice/${id}`)
-        }
-      }).catch(error => {
-          console.log(error);
-      })
-}, [finalValue]);
+//   useEffect(() => {
+   
+// }, [finalValue]);
 
     const handleSubmit = e => {   
-        setFinalValue(lockValue)
+       
+        const payload = {lockValue}
+        console.log(payload);
+        Axios.post(`/setlock/${id}`, payload)
+        .then(res => {
+            console.log(res);
+            const next = res.data.lockkrypt.type;
+            if(next === "quiz"){
+                navigate(`/quiz/${id}`)
+            } else if (next === "passcode") {
+                navigate(`/passcode/${id}`)
+            } else if (next === "multiple"){
+                navigate(`/choice/${id}`)
+            }
+          }).catch(error => {
+              console.log(error);
+          })
+    
     }
 
    const handleClick = e => {
       setLockValue(e.target.value)
-      if (e.target.value === "Quiz"){
+      if (e.target.value === "quiz"){
          setQuizLive(false)
          setPassLive(true)
          setChoiceLive(true)
-      } else if (e.target.value === "Passcode"){
+      } else if (e.target.value === "passcode"){
         setQuizLive(true)
         setPassLive(false)
         setChoiceLive(true)
      }
-     else if (e.target.value === "Multiple"){
+     else if (e.target.value === "multiple"){
         setQuizLive(true)
         setPassLive(true)
         setChoiceLive(false)   
@@ -80,25 +81,25 @@ export default function Setlock (){
             <Header />
             <section className="flex flex-col items-center pt-40">
            
-          <button value="Passcode"  className={passLive ? "lock-bttn bg-primary text-white" : "lock-bttn border-2 border-white shadow "}  onClick={handleClick}>
+          <button value="passcode"  className={passLive ? "lock-bttn bg-primary text-white" : "lock-bttn border-2 border-white shadow "}  onClick={handleClick}>
             <Password />
-            <button value="Passcode" onClick={handleClick} className="self-center ml-4">Passcode</button>
+            <button value="passcode" onClick={handleClick} className="self-center ml-4">Passcode</button>
           </button>
           
 
-        <button value="Quiz" className={quizLive ? "lock-bttn bg-primary text-white" : "lock-bttn border-2 border-white shadow "} onClick={handleClick}>
+        <button value="quiz" className={quizLive ? "lock-bttn bg-primary text-white" : "lock-bttn border-2 border-white shadow "} onClick={handleClick}>
             <Quiz />
-            <button value="Quiz" className="self-center ml-4" onClick={handleClick}>Quiz</button>
+            <button value="quiz" className="self-center ml-4" onClick={handleClick}>Quiz</button>
         </button>
        
-        <button value="Multiple"  className={choiceLive ? "lock-bttn bg-primary text-white" : "lock-bttn border-2 border-white shadow "} onClick={handleClick}>
+        <button value="multiple"  className={choiceLive ? "lock-bttn bg-primary text-white" : "lock-bttn border-2 border-white shadow "} onClick={handleClick}>
            <Choices />
-          <button className="self-center ml-4" value="Multiple" onClick={handleClick}>Multiple Choice Questions</button>
+          <button className="self-center ml-4" value="multiple" onClick={handleClick}>Multiple Choice Questions</button>
         </button>
 
         
         <button onClick={handleSubmit} className="mt-2 shadow border-1 sub-bttn"> 
-              <Link to="">next</Link>
+              next
              </button>
        
 

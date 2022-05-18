@@ -1,6 +1,6 @@
 import Header from "../core-components/Header";
 import Nav from "../core-components/Nav";
-import {Link, useParams} from "react-router-dom";
+import {Link, useParams, useNavigate} from "react-router-dom";
 import QuizAnswerBox from "../macro-components/QuizAnswerBox";
 import {ReactComponent as Key} from "../svg/carbon_password.svg"
 import Axios from 'axios';
@@ -14,6 +14,7 @@ export default function AnswerQuiz(){
   const [userQuiz, setUserQuiz] = useState([{answer:""}])
   
     const {id} = useParams();
+    const navigate = useNavigate();
 
     useEffect(() =>{
         Axios.get(`/q-unlock/${id}`)
@@ -51,6 +52,30 @@ export default function AnswerQuiz(){
         console.log(userQuiz)
       }
 
+      const handleSubmit = () => {
+
+        const payload = {userQuiz}
+        console.log(payload);
+        Axios.post(`/q-unlock/${id}`, payload)
+        .then(function (response){
+          console.log(response);
+        //   // if (status = "success"){
+        //   //   navigate(`/unlock/${id}`)
+        //   // } else if (status === "failure"){
+        //   //  window.location.reload();
+        //   // }
+        
+
+
+        })
+        .catch( function(error){
+          console.log(error);
+        })
+        .then(function (){
+
+        })
+      }
+
     console.log(answerQuiz)
     console.log(userQuiz)
 
@@ -83,15 +108,15 @@ export default function AnswerQuiz(){
         
         </section>
 
-        <Link to="/unlocked">
-            <button className="fixed bottom-20  right-6 shadow border-4 def-bttn flex"> 
+       
+          <button className="fixed bottom-20  right-6 shadow border-4 def-bttn flex" onClick={handleSubmit}> 
           <Key />
           <p className="ml-2">
           Unlock Krypt
 
           </p>  
            </button>
-           </Link>
+         
         
     
         </section>

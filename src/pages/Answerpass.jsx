@@ -47,7 +47,7 @@ export default function Answerpass(){
         Axios.post(`/p-unlock/${id}`, payload)
         .then(function (response) {
             if (response.status === 'success'){
-                navigate(`/share/${id}`)
+                navigate(`/unlock/${id}`)
             }
             else {
                 window.location.reload();
@@ -82,22 +82,14 @@ export default function Answerpass(){
         <label className=" mt-3 self-start pl-2 mb-10 text-lg" htmlFor="passcode">Enter The Passcode the Unlock</label>
         <input onChange={handleChange} className="rounded-2xl border-2 bg-secondary-500 placeholder:pl-4 h-10 shadow-sm border-white" type="password" name="answer" placeholder="Enter krypt passcode" />
          </div>
-
-
    
-            <button onClick={handleSubmit} className=" shadow border-4 border-white text-secondary-500 self-center w-fit  bg-secondary-100 rounded-full py-4 px-4 font-bold flex mt-4 "> 
+        <button onClick={handleSubmit} className=" shadow border-4 border-white text-secondary-500 self-center w-fit  bg-secondary-100 rounded-full py-4 px-4 font-bold flex mt-4 "> 
          <Key />
          <p className="ml-2">
          Unlock Krypt
          </p>
         </button>
-   
-    
-    
-    
-    
     </section>
-
     </section>
 
    

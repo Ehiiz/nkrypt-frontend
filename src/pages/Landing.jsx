@@ -29,10 +29,10 @@ export default function Landing(){
     const {id} = useParams();
 
     useEffect(() => {
-                console.log("UseEffect started");
                 console.log(id)
                 Axios.get(`/krypt/${id}`)
                 .then(function (response) {
+                  console.log(response)
                   setKrypt({...response.data.data})
                 })
                 .catch(function (error) {

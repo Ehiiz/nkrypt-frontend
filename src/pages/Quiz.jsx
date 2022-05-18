@@ -21,7 +21,7 @@ const navigate = useNavigate();
     }
 
     const addQuestion = () => {
-      setQuestionBox([...questionBox, {ques:"", ans:""}])
+      setQuestionBox([...questionBox, {question:"", answer:""}])
     }
 
     const handleChange = (i,e) =>{

@@ -33,7 +33,7 @@ function App() {
         <Route path="/setlock/:id" exact element={<Setlock />}/>
         <Route path="/quiz/:id" exact element={<Quiz />}/>
         <Route path="/passcode/:id" exact element={<Passcode />}/>
-        <Route path="/unlocked" exact element={<Unlocked />}/>
+        <Route path="/unlock/:id" exact element={<Unlocked />}/>
         <Route path="/create" exact element={<Createkrypt />}/>
         <Route path="/choice/:id" exact element={<Multichoice />} />
         <Route path="/share/:id" exact element={<Success />} />
